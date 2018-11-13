@@ -10,7 +10,7 @@ var win;
 
 // Each crystal should have a random hidden value between 1 - 12.
 
-randomNumber = Math.floor(Math.random() * 108 ) + 12;
+randomNumber = Math.floor(Math.random() * 101 ) + 19;
 
 $("#result").html('Random Number: ' + randomNumber);
 for(var i = 0; i < 4; i++){
@@ -20,16 +20,17 @@ for(var i = 0; i < 4; i++){
     var crystal = $("<div>");
         crystal.attr({
             "class": 'crystal',
-            "data-random": random
+            "randomCrystalNumber": random
         });
 
     $(".crystals").append(crystal);
 }
 
-
-
-
 // When the player clicks on a crystal, it will add a specific amount of points to the player's total score.
+
+$(".crystal").on('click', function () {
+    console.log($(this).attr('randomCrystalNumber'));
+});
 
 // Your game will hide this amount until the player clicks a crystal.
 
