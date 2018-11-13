@@ -1,4 +1,17 @@
+var randomNumber;
+var loss;
+var win;
+
 // There will be four crystals displayed as buttons on the page.
+
+for(var i = 0; i < 4; i++){
+
+    var crystal = $("<div>");
+        crystal.attr("class", 'crystal');
+
+    $(".crystals").append(crystal);
+}
+
 
 // The player will be shown a random number at the start of the game.
 
