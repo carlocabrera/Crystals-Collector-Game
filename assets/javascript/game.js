@@ -4,16 +4,30 @@ var win;
 
 // There will be four crystals displayed as buttons on the page.
 
+// The player will be shown a random number at the start of the game.
+
+// The random number shown at the start of the game should be between 19 - 120.
+
+// Each crystal should have a random hidden value between 1 - 12.
+
+randomNumber = Math.floor(Math.random() * 108 ) + 12;
+
+$("#result").html('Random Number: ' + randomNumber);
 for(var i = 0; i < 4; i++){
 
+    var random = Math.floor(Math.random() * 12) + 1;
+    console.log(random)
     var crystal = $("<div>");
-        crystal.attr("class", 'crystal');
+        crystal.attr({
+            "class": 'crystal',
+            "data-random": random
+        });
 
     $(".crystals").append(crystal);
 }
 
 
-// The player will be shown a random number at the start of the game.
+
 
 // When the player clicks on a crystal, it will add a specific amount of points to the player's total score.
 
@@ -30,7 +44,3 @@ for(var i = 0; i < 4; i++){
 // When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
 
 // The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
-
-// The random number shown at the start of the game should be between 19 - 120.
-
-// Each crystal should have a random hidden value between 1 - 12.
