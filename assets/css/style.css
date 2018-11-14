@@ -1,3 +1,22 @@
+.header {
+    padding: 60px;
+    text-align: center;
+    background: grey;
+    color: white;
+    font-size: 30px;
+  }
+
+h1{
+    font-size: 75px;
+    padding-bottom: 10px;
+}
+
+.text {
+    text-align: center;
+    font-size: 50px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 .crystals{
     display: flex;
     justify-content: space-around;
@@ -5,7 +24,19 @@
 }
 
 .crystal{
-    border:1px solid purple;
+    border:1px solid grey;
     height:200px;
     width: 200px;
+    border-radius: 4px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    transition: box-shadow 1s;
+}
+
+.crystal:hover{
+    box-shadow: 15px 15px 15px rgba(0,0,0,0.5);
+
+}
+
+img{
+    width:50px;
 }

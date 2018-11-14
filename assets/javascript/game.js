@@ -1,6 +1,7 @@
 var randomNumber;
-var loss;
-var win;
+var loss = 0;
+var win = 0;
+var last = 0;
 
 // There will be four crystals displayed as buttons on the page.
 
@@ -10,31 +11,97 @@ var win;
 
 // Each crystal should have a random hidden value between 1 - 12.
 
-randomNumber = Math.floor(Math.random() * 101 ) + 19;
+var restartGame = function () {
 
-$("#result").html('Random Number: ' + randomNumber);
-for(var i = 0; i < 4; i++){
+    $(".crystals").empty();
 
-    var random = Math.floor(Math.random() * 12) + 1;
-    console.log(random)
-    var crystal = $("<div>");
+    var images = [
+    'assets/images/aquamarine.jpeg',
+    'assets/images/citrine.jpeg',
+    'assets/images/purple.jpeg',
+    'assets/images/red.jpeg',
+]
+
+    randomNumber = Math.floor(Math.random() * 101) + 19;
+
+    $("#result").html('Target Score: ' + randomNumber);
+
+    for (var i = 0; i < 4; i++) {
+
+        var random = Math.floor(Math.random() * 12) + 1;
+
+
+
+        var crystal = $("<div>");
         crystal.attr({
             "class": 'crystal',
             "randomCrystalNumber": random
         });
 
-    $(".crystals").append(crystal);
+        crystal.css({
+
+            "background-image":"url('" + images[i] + "')", "background-size":"50px", 
+
+        });
+
+
+        $(".crystals").append(crystal);
+    }
 }
 
-// When the player clicks on a crystal, it will add a specific amount of points to the player's total score.
+restartGame();
 
-$(".crystal").on('click', function () {
-    console.log($(this).attr('randomCrystalNumber'));
-});
+
+
+
+// When the player clicks on a crystal, it will add a specific amount of points to the player's total score.
 
 // Your game will hide this amount until the player clicks a crystal.
 
 // When they do click one, update the player's score counter.
+
+
+$(document).on('click', ".crystal", function () {
+
+    var num = parseInt($(this).attr('randomCrystalNumber'));
+
+    last += num;
+
+    $("#last").html("Score: " + last);
+
+    if (last > randomNumber) {
+
+        loss++;
+
+        $("#loss").html("Losses: " + loss);
+
+        last = 0;
+
+        restartGame();
+
+
+    }
+
+    else if (last === randomNumber) {
+
+        win++;
+
+        $("#win").html("Wins: " + win);
+
+        last = 0;
+
+        restartGame();
+
+
+    }
+
+
+
+
+});
+
+
+
 
 // The player wins if their total score matches the random number from the beginning of the game.
 
